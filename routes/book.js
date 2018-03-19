@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var Book  = require('../models/book')
+const express = require('express');
+const router = express.Router();
+const Book  = require('../models/book')
 
 
 
