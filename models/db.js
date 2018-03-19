@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var config = require('config');
-var connectionString = config.DBHost
+const mongoose = require('mongoose');
+const config = require('config');
+const connectionString = config.DBHost
 
 
 mongoose.connect(connectionString);
