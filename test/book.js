@@ -17,8 +17,8 @@ describe("Books", () => {
   beforeEach((done) => {
     Book.remove({}, (err) => {
       done()
-    })
-  })
+    });
+  });
 describe('/GET book', () => {
   it('it should GET all the books', (done) => {
     chai.request(server)
@@ -29,16 +29,16 @@ describe('/GET book', () => {
       res.body.length.should.be.eql(0);
       // call done when test is over
     done();
-    })
-  })
-})
+    });
+  });
+});
 describe('/POST book', () => {
   it('it should not POST a book withou complete parameters', (done) => {
     let book = {
       title: "Cats cradel",
       author: "Kurty",
       year: 1950
-    }
+    };
 
     chai.request(server)
     .post('/book')
@@ -49,16 +49,16 @@ describe('/POST book', () => {
       res.body.should.have.property('errors');
       res.body.errors.should.have.property('pages');
       res.body.errors.pages.should.have.property('kind').eql('required');
-      done()
-    })
-  })
+      done();
+    });
+  });
   it('it should POST a book ', (done) => {
     let book = {
       title: 'Cats Cradle',
       author: 'kurt',
       year: 1950,
       pages: 351
-    }
+    };
 
     chai.request(server)
     .post('/book')
@@ -72,9 +72,9 @@ describe('/POST book', () => {
       res.body.book.should.have.property('year');
       res.body.book.should.have.property('pages');
       done();
-    })
-  })
-})// end of post describe
+    });
+  });
+});// end of post describe
 
 describe('/GET/:id book', () => {
 
@@ -85,7 +85,7 @@ describe('/GET/:id book', () => {
       author: 'kurt',
       year: 1950,
       pages: 351
-    })
+    });
 
   book.save((err, book) => {
     chai.request(server)
@@ -99,9 +99,9 @@ describe('/GET/:id book', () => {
       res.body.should.have.property('pages');
       res.body.should.have.property('_id').eql(book.id);
       done()
-    })
-  })
-})
+    });
+  });
+});
 
 
 })// end of get id describe
@@ -115,7 +115,7 @@ describe('/put/:id book', () => {
       author: 'kurt',
       year: 1950,
       pages: 351
-    })
+    });
 
   book.save((err, book) => {
     chai.request(server)
@@ -127,13 +127,13 @@ describe('/put/:id book', () => {
       res.body.should.be.a('object');
       res.body.should.have.property('message').eql("book updated!")
       res.body.book.should.have.property('author').eql("Kurt Vonnegut");
-      done()
-    })
-  })
-})
+      done();
+    });
+  });
+});
 
 
-})// end of get put describe
+});// end of get put describe
 
 describe('/delete/:id book', () => {
 
@@ -144,7 +144,7 @@ describe('/delete/:id book', () => {
       author: 'kurt',
       year: 1950,
       pages: 351
-    })
+    });
 
   book.save((err, book) => {
     chai.request(server)
@@ -156,12 +156,12 @@ describe('/delete/:id book', () => {
       res.body.should.have.property('message').eql("Book was deleted")
       res.body.result.should.have.property('ok').eql(1);
       res.body.result.should.have.property('n').eql(1);
-      done()
-    })
-  })
-})
+      done();
+    });
+  });
+});
 
 
-})// end of get delete describe
+});// end of get delete describe
 
-})  // end of all the tests
+});  // end of all the tests
