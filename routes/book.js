@@ -48,7 +48,7 @@ router.route('/:id')
 router.route('/')
     .get(function(req, res){
 
-      let query = Book.find();
+      const query = Book.find();
 
       query.exec((err, books) => {
         if (err) res.send(err)
@@ -58,7 +58,7 @@ router.route('/')
     })
     .post(function(req, res){
 
-      var newBook = new Book(req.body);
+      const newBook = new Book(req.body);
 
       newBook.save((err, book) => {
         if(err){
